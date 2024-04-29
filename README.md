@@ -1,2 +1,3 @@
 # pokedex-go
-CLI Pokedex tool
+
+Pokedex CLI tool

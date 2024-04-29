@@ -1,9 +1,19 @@
 package main
 
 import (
-    "fmt"
-    )
+	"fmt"
+	"os"
+)
 
 func main() {
-  fmt.Println("Hello, Alola!")
+	if len(os.Args) > 1 {
+		fmt.Println("Error: too many arguments")
+		fmt.Println("Usage: pokedex")
+		return
+	}
+
+	// greeting
+	fmt.Printf("\nWelcome to the 🐙 Pokedex!\n\n")
+
+	startREPL()
 }
