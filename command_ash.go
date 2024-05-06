@@ -4,8 +4,8 @@ import (
 	"fmt"
 )
 
-func callbackAsh() error {
-	fmt.Println("You're the very best!")
+
+func callbackAsh(cfg *config) error {
+	fmt.Println("\n🐚  You're the very best!")
 	return nil
 }
-
