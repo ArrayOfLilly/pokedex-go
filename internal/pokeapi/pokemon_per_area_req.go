@@ -14,6 +14,17 @@ func (c *Client) ListPokemonsPerAreas(areaName string) (PokemonPerAreaResp, erro
 		return PokemonPerAreaResp{}, fmt.Errorf("missing area name")
 	}
 
+	// use cached if it exists
+	if val, ok := c.cache.Get(fullURL); ok {
+		pokemonPerAreaResp := PokemonPerAreaResp{}
+		err := json.Unmarshal(val, &pokemonPerAreaResp)
+		if err != nil {
+			return PokemonPerAreaResp{}, err
+		}
+
+		return pokemonPerAreaResp, nil
+	}
+
 	// make new request
 	req, err := http.NewRequest("GET", fullURL, nil)
 	if err != nil {

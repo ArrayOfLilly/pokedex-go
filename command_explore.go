@@ -14,11 +14,12 @@ func callbackExplore(cfg *config, param string) error {
 	
 	location := strings.Title(strings.ReplaceAll(param, "-", " "))
 
-	fmt.Println("-----------------------------------")
+	fmt.Println("------------------------------------------------")
 	fmt.Printf("Pokemon Encounters at %s: \n", location)
-	fmt.Println("-----------------------------------")
+	fmt.Println("------------------------------------------------")
 	for _, pokemon := range resp.PokemonEncounters {
 		fmt.Printf(" - %s\n", pokemon.Pokemon.Name)
 	}
+	fmt.Println("")
 	return nil
 }

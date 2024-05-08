@@ -14,6 +14,7 @@ func (c *Client) ListLocationAreas(pageURL *string) (LocationAreasResp, error) {
 		fullURL = *pageURL
 	}
 
+	// use cached if it exists
 	if val, ok := c.cache.Get(fullURL); ok {
 		locationsResp := LocationAreasResp{}
 		err := json.Unmarshal(val, &locationsResp)

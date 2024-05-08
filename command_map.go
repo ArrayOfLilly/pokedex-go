@@ -22,6 +22,7 @@ func callbackMap(cfg *config, param string) error {
 	cfg.nextLocationURL = resp.Next
 	cfg.prevLocationURL = resp.Previous
 
+	fmt.Println("")
 	return nil
 }
 
@@ -45,5 +46,6 @@ func callbackMapBack(cfg *config, param string) error {
 	cfg.nextLocationURL = resp.Next
 	cfg.prevLocationURL = resp.Previous
 
+	fmt.Println("")
 	return nil
 }

@@ -14,7 +14,7 @@ func startREPL(cfg *config) {
 	
 	// REPL running
 	for {
-		fmt.Printf(" > ")
+		fmt.Printf("Pokedex > ")
 		scanner.Scan()
 		text := scanner.Text()
 		
@@ -61,7 +61,7 @@ func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"help": {
 			name:        "help",
-			description: "Displays a help message",
+			description: "Displays a help message\n  usage: help or help [command name]",
 			callback:    callbackHelp,
 		},
 		"clear": {
@@ -91,7 +91,7 @@ func getCommands() map[string]cliCommand {
 		}, 
 		"explore": {
 			name:        "explore",
-			description: "List of pokemon encounters in a specific location area",
+			description: "list of pokemon encounters in a specific location area\n  usage: explore [location area name]",
 			callback:    callbackExplore,
 		}, 
 	}
