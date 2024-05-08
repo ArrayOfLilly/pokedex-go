@@ -5,7 +5,6 @@ import (
 	"fmt"
 )
 
-
 func callbackMap(cfg *config, param string) error {
 	resp, err := cfg.pokeapiClient.ListLocationAreas(cfg.nextLocationURL)
 	if err != nil {

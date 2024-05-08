@@ -94,6 +94,11 @@ func getCommands() map[string]cliCommand {
 			description: "list of pokemon encounters in a specific location area\n  usage: explore [location area name]",
 			callback:    callbackExplore,
 		}, 
+		"pokemon": {
+			name:        "pokemon",
+			description: "describes the specified pokemon",
+			callback:    callbackPokemon,
+		}, 
 	}
 }
 

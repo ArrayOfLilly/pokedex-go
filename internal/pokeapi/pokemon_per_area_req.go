@@ -8,7 +8,7 @@ import (
 ) 
 
 func (c *Client) ListPokemonsPerAreas(areaName string) (PokemonPerAreaResp, error) {
-	endpoint := "/location-area/" + areaName
+	endpoint := "/location-area" + "/" + areaName
 	fullURL := BaseURL + endpoint
 	if len(areaName) == 0 {
 		return PokemonPerAreaResp{}, fmt.Errorf("missing area name")
