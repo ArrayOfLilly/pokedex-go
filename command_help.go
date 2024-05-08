@@ -4,11 +4,19 @@ import (
 	"fmt"
 )
 
-func callbackHelp(cfg *config) error {
-	commands := getCommands()
+func callbackHelp(cfg *config, param string) error {
 	fmt.Println("-----------------------------------")
 	fmt.Println("Welcome to the Pokedex help menu:")
 	fmt.Println("-----------------------------------")
+	
+	commands := getCommands()
+	cmd, ok := commands[param]
+	fmt.Println(param)
+	if ok {
+		fmt.Printf("* %s: %s\n", cmd.name, cmd.description)
+		return nil
+	}
+
 	for _, item := range commands {
 		if item.name == "ash" {
 			continue

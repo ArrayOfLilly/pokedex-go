@@ -24,18 +24,27 @@ func startREPL(cfg *config) {
 		}
 
 		commandName := cleaned[0]
-
+		
 		availableCommands := getCommands()
-
+		
 		command, ok := availableCommands[commandName]
 		if !ok {
 			fmt.Println("invalid command")
 			continue		
 		}
-		err := command.callback(cfg)
-		if err != nil {
-			fmt.Println(err)
-		}
+
+		if len(cleaned) > 1 {
+			param := cleaned[1]
+			err := command.callback(cfg, param)
+			if err != nil {
+				fmt.Println(err)
+			}
+		} else {
+			err:= command.callback(cfg, "")
+			if err != nil {
+				fmt.Println(err)
+			}
+		}		
 	}
 }
 
@@ -43,7 +52,7 @@ func startREPL(cfg *config) {
 type cliCommand struct {
 	name string
 	description string
-	callback func(*config) error
+	callback func(*config, string) error
 }
 	
 
@@ -79,6 +88,11 @@ func getCommands() map[string]cliCommand {
 			name:        "mapb",
 			description: "Paginated list of location areas, 20 per page, backwards",
 			callback:    callbackMapBack,
+		}, 
+		"explore": {
+			name:        "explore",
+			description: "List of pokemon encounters in a specific location area",
+			callback:    callbackExplore,
 		}, 
 	}
 }

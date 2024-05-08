@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/ArrayOfLilly/pokedexcli/internal/pokeapi"
 )
@@ -22,7 +23,7 @@ func main() {
 
 	// config
 	cfg := config{
-		pokeapiClient: pokeapi.NewClient(),
+		pokeapiClient: pokeapi.NewClient(5*time.Second, time.Minute*5),
 	}
 
 	// greeting

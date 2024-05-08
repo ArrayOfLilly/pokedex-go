@@ -7,7 +7,7 @@ import (
 )
 
 // exit
-func callbackExit(cfg *config) error {
+func callbackExit(cfg *config, param string) error {
 
 	fmt.Print("\033[2J") // Clear Screen
 	fmt.Print("\033[H")  // Cursor Position
