@@ -3,13 +3,10 @@ package main
 import (
 	"fmt"
 	"strings"
-
-	"github.com/ArrayOfLilly/pokedexcli/internal/pokeapi"
 )
 
 func callbackExplore(cfg *config, param string) error {
-	pokeapiClient := pokeapi.NewClient()
-  	resp, err := pokeapiClient.ListPokemonsPerAreas(param)
+  	resp, err := cfg.pokeapiClient.ListPokemonsPerAreas(param)
 	if err != nil {
 		return err
 	}
