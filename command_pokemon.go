@@ -45,25 +45,27 @@ func callbackPokemon(cfg *config, param string) error {
 	// Evolutin Chain
 	fmt.Printf("Evolution Chain: \n")
 	if len(resp3.Chain.EvolvesTo) == 0 {
-		fmt.Printf("%s does not evolve\n", strings.Title(resp3.Chain.Species.Name))
+		fmt.Printf("- %s does not evolve\n", strings.Title(resp3.Chain.Species.Name))
 	} else {
 		for _, e := range resp3.Chain.EvolvesTo {
-			fmt.Printf("%s evolves to %s\n", strings.Title(resp3.Chain.Species.Name), strings.Title(e.Species.Name))
+			fmt.Printf("- %s evolves to %s\n", strings.Title(resp3.Chain.Species.Name), strings.Title(e.Species.Name))
 			if len(e.EvolvesTo) == 0 {
-				fmt.Printf("%s does not evolve\n", strings.Title(e.Species.Name))
+				fmt.Printf("- %s does not evolve\n", strings.Title(e.Species.Name))
 			} else {
 				for _, ee := range e.EvolvesTo {
-					fmt.Printf("%s evolves to %s\n", strings.Title(e.Species.Name), strings.Title(ee.Species.Name))
+					fmt.Printf("- %s evolves to %s\n", strings.Title(e.Species.Name), strings.Title(ee.Species.Name))
 				}	
 			}
 		}
 	}
 
+	// Egg group
 	fmt.Printf("Egg Groups: \n")
 	for _, t := range resp2.EggGroups {
 		 fmt.Printf("- %s \n", t.Name)
 	}
 
+	// Special roles
 	if resp2.IsLegendary {
 		fmt.Println("Legendary Pokemon")
 	}

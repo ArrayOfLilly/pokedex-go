@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"time"
-
+	"math/rand"
 	"github.com/ArrayOfLilly/pokedexcli/internal/pokeapi"
 )
 
@@ -31,4 +31,6 @@ func main() {
 	
 	// REPL
 	startREPL(&cfg)
+
+	rand.Seed(time.Now().UnixMilli())
 }
