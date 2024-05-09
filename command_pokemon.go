@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func callbackPokemon(cfg *config, param string) error {
+func callbackPokemon(cfg *config, pkdx *map[string]Pokemon, param string) error {
   	resp, err := cfg.pokeapiClient.DescribePokemon(param)
 	if err != nil {
 		return err

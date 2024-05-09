@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"time"
-	"math/rand"
+
 	"github.com/ArrayOfLilly/pokedexcli/internal/pokeapi"
 )
 
@@ -26,11 +26,11 @@ func main() {
 		pokeapiClient: pokeapi.NewClient(5*time.Second, time.Minute*5),
 	}
 
+	pkdx := getPokedex()
+
 	// greeting
 	fmt.Printf("\nWelcome to the 🐙 Pokedex!\n\n")
 	
 	// REPL
-	startREPL(&cfg)
-
-	rand.Seed(time.Now().UnixMilli())
+	startREPL(&cfg, &pkdx)
 }

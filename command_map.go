@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func callbackMap(cfg *config, param string) error {
+func callbackMap(cfg *config, pkdx *map[string]Pokemon, param string) error {
 	resp, err := cfg.pokeapiClient.ListLocationAreas(cfg.nextLocationURL)
 	if err != nil {
 		return err
@@ -25,7 +25,7 @@ func callbackMap(cfg *config, param string) error {
 	return nil
 }
 
-func callbackMapBack(cfg *config, param string) error {
+func callbackMapBack(cfg *config, pkdx *map[string]Pokemon, param string) error {
 	if cfg.prevLocationURL == nil {
 		return errors.New("you're on the first page")
 	}

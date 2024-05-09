@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func startREPL(cfg *config) {
+func startREPL(cfg *config, pkdx *map[string]Pokemon) {
 
 	// read stin
 	scanner := bufio.NewScanner(os.Stdin)
@@ -35,12 +35,12 @@ func startREPL(cfg *config) {
 
 		if len(cleaned) > 1 {
 			param := cleaned[1]
-			err := command.callback(cfg, param)
+			err := command.callback(cfg, pkdx, param)
 			if err != nil {
 				fmt.Println(err)
 			}
 		} else {
-			err:= command.callback(cfg, "")
+			err:= command.callback(cfg, pkdx, "")
 			if err != nil {
 				fmt.Println(err)
 			}
@@ -52,7 +52,7 @@ func startREPL(cfg *config) {
 type cliCommand struct {
 	name string
 	description string
-	callback func(*config, string) error
+	callback func(*config, *map[string]Pokemon, string) error
 }
 	
 
@@ -101,9 +101,14 @@ func getCommands() map[string]cliCommand {
 		}, 
 		"catch": {
 			name:        "catch",
-			description: "try to catch the specified pokemon, on success, the pokemon will be added to the user pokedex\n  usage: catch [pokemon name]",
+			description: "catch the specified pokemon, on success it will be added to the user pokedex\n  usage: catch [pokemon name]",
 			callback:    callbackCatch,
-		}, 
+		},
+		"inspect": {
+			name:        "inspect",
+			description: "Describe pokemons in your pokedex\n  usage: inspect [pokemon name]",
+			callback:    callbackInspect,
+		},
 	}
 }
 
